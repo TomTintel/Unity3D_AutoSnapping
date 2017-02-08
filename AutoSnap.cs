@@ -48,7 +48,6 @@ public class AutoSnap : EditorWindow
         }
     }
 
-
     private void snap()
     {
         try
