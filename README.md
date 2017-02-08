@@ -1,7 +1,10 @@
 # Unity3D_AutoSnapping
 This is an automated snapping tool for Unity3D.
 
-I wrote this for the sake of actually having the option to toggle snapping.
+First and foremost, yes I know holding CTRL will enable snapping to grid.
+However, this grid is also relative to the object, and not the main grid. I wrote this little plugin to fix that.
+
+This really makes the level design for a 2D platformer a whole lot more streamlined.
 
 ## Installation
 place the AutoSnap.cs file in a folder called "Editor" in the root of your project.
