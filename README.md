@@ -14,3 +14,6 @@ in the "Edit" menu under the "Snap settings..." option you'll find the "AutoSnap
 
 ## Notes
 In order to function the autosnap window actually needs to be open. Thus I personally recommend docking it somewhere unobtrusive.
+
+### Special Thanks
+the people over in the GameDev.tv discord channel

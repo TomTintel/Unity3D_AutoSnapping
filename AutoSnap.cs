@@ -16,10 +16,10 @@ public class AutoSnap : EditorWindow
     }
 
     // set autosnapping to disabled on start
-    bool autoSnapEnabled = false;
+    private bool autoSnapEnabled = false;
 
-    Vector3 prevPosition;
-    float moveX=1, moveY=1, moveZ=1;
+    private Vector3 prevPosition;
+    private float moveX=1, moveY=1, moveZ=1;
 
     // Creating the contents of the window
     void OnGUI()
@@ -42,22 +42,22 @@ public class AutoSnap : EditorWindow
             {
                 // And the actual object actually moved position
                 if (Selection.transforms[0].position != prevPosition) {
-                    snap();
+                    Snap();
                 }
             }
         }
     }
 
-    private void snap()
+    private void Snap()
     {
         try
         {
             for (int i = 0; i < Selection.transforms.Length; i++)
          {
                 Vector3 t = Selection.transforms[i].transform.position;
-                t.x = round(t.x, SnapAxis.X);
-                t.y = round(t.y, SnapAxis.Y);
-                t.z = round(t.z, SnapAxis.Z);
+                t.x = moveX * Mathf.Round((t.x / moveX));
+                t.y = moveY * Mathf.Round((t.y / moveY));
+                t.z = moveZ * Mathf.Round((t.z / moveZ));
                 Selection.transforms[i].transform.position = t;
             }
             prevPosition = Selection.transforms[0].position;
@@ -66,26 +66,6 @@ public class AutoSnap : EditorWindow
         {
             Debug.LogError("Nothing to move.  " + e);
         }
-    }
-
-    private enum SnapAxis {X,Y,Z}
-
-    private float round(float value, SnapAxis axis)
-    {
-        float _base = 0f;
-        switch (axis)
-        {
-            case SnapAxis.X:
-                _base = moveX;
-                break;
-            case SnapAxis.Y:
-                _base = moveY;
-                break;
-            case SnapAxis.Z:
-                _base = moveZ;
-                break;
-        }
-        return _base * Mathf.Round((value / _base));
     }
 }
 
